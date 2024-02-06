@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <time.h>
+#include <string.h>
+#include <stdlib.h>
 
 char *my_printf(char *argc, char **argv)
 {
@@ -190,9 +189,9 @@ void my_printf(char *str, ...)
 
 int main()
 {
-    int num = 77;
-    char str[]= "Hello World!";
-    char c = 'u';
+    int num = 7;
+    char str[]= "hello world";
+    char c = 'a';
 
     my_printf("%p\n", &num);
     printf("%p\n", &num);
