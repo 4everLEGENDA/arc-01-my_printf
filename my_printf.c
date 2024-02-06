@@ -1,10 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
 
-char *my_printf(char *argc, char **argv)
+char *my_strc(char *argc, char **argv)
 {
     int i = 0;
     while (argv[i] != 0)
@@ -30,7 +30,7 @@ char *reverse(char *str)
 {
     int i = 0;
     char *temp_str = (char *)malloc((my_strlen(str) + 1) * sizeof(char));
-    temp_str = my_printf(temp_str, str);
+    temp_str = my_strc(temp_str, str);
     int len = my_strlen(temp_str);
     while (i < len / 2)
     {
@@ -82,7 +82,7 @@ char *my_memoryf(int long num)
     return reverse(str);
 }
 
-char *memoryf(long int dec)
+char *memoryfunction(long int dec)
 {
     int i = 0, temp;
     char *hex = calloc(21, sizeof(char));
@@ -104,7 +104,7 @@ char *memoryf(long int dec)
     return hex;
 }
 
-char *signmemory(int dec)
+char *dec_to_oct(int dec)
 {
     int i = 0;
     char *octalStr = (char *)calloc(21, sizeof(char));
@@ -130,7 +130,7 @@ char *my_u_num(int num)
 void my_printf(char *str, ...)
 {
     va_list args;
-    start(args, str);
+    va_start(args, str);
 
     for (int i = 0; str[i]; i++)
     {
@@ -155,7 +155,7 @@ void my_printf(char *str, ...)
             else if (str[i] == 'x')
             {
                 int num = va_arg(args, int);
-                char *str_3 = memoryf(num);
+                char *str_3 = memoryfunction(num);
                 write(1, str_3, my_strlen(str_3));
             }
             else if (str[i] == 'c')
@@ -166,13 +166,13 @@ void my_printf(char *str, ...)
             else if (str[i] == 'o')
             {
                 int num = va_arg(args, int);
-                char *str_4 = signmemory(num);
+                char *str_4 = dec_to_oct(num);
                 write(1, str_4, strlen(str_4));
             }
             else if (str[i] == 'p')
             {
                 long int num = va_arg(args, long);
-                char *str_5 = memoryf(num);
+                char *str_5 = memoryfunction(num);
                 write(1, "0x", 2);
                 write(1, str_5, my_strlen(str_5));
             }
@@ -189,7 +189,7 @@ void my_printf(char *str, ...)
 
 int main()
 {
-    int num = 7;
+    int num = 17;
     char str[]= "hello world";
     char c = 'a';
 
