@@ -190,9 +190,9 @@ void my_printf(char *str, ...)
 
 int main()
 {
-    int num = 12;
-    char str[]= "hello world";
-    char c = 'a';
+    int num = 77;
+    char str[]= "Hello World!";
+    char c = 'u';
 
     my_printf("%p\n", &num);
     printf("%p\n", &num);
